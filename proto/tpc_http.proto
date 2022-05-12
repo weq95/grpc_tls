@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/api/annotations.proto";
+message StringMessage {
+    string val = 1;
+}
+
+service RestService {
+    rpc Get (StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+            get: "get/{value}"
+        };
+    }
+
+    rpc Post (StringMessage) returns (StringMessage) {
+        option (google.api.http) = {
+            post: "/post",
+            body: "*"
+        };
+    }
+}
+
+//protoc -I/usr/local/include -I. -I$GOPATH/src -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=. --go_out=plugins=grpc:. ./tcp_http.proto
+
+

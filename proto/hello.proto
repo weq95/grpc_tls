@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+//protoc --go_out=plugins=grpc:. ./hello.proto
+package proto;
+
+option go_package = "./src";
+
+message String {
+    string value = 1;
+}
+
+//go install github.com/golang/protobuf/protoc-gen-go
+//go get: upgraded github.com/golang/protobuf
+
+service HelloService {
+    rpc Hello (String) returns (String);
+
+    rpc Channel (stream String) returns (String);
+}

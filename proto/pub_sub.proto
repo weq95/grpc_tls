@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+
+package proto;
+
+option go_package = "./src";
+
+
+message String {
+    uint32 id = 1;
+    string name = 2;
+    string value = 3;
+}
+
+service PubSubService {
+    rpc Publish (String) returns (String);
+    rpc Subscribe (String) returns (stream String);
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./src";
+
+message SearchRequest {
+    string query = 1;
+    uint32 page = 2;
+    uint32 per = 3;
+}
+
+message SearchResponse {
+    uint32 code = 1;
+    string msg = 2;
+}
+
+service SearchService {
+    rpc Search (SearchRequest) returns (SearchResponse);
+}
