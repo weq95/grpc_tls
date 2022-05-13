@@ -22,4 +22,8 @@ git remote add origin https://github.com/weq95/grpc_tls.git
 git branch -M main
 git push -u origin main
 ```
+
+```azure
+rustup toolchain install stable-x86_64-pc-windows-gnu
+rustup default stable-x86_64-pc-windows-gnu
 ```
